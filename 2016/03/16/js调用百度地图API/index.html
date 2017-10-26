@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>js调用百度地图API | YouGuess | youguess13@qq.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="javascript">
+    <meta name="description" content="前几天被要求在页面中调用地图并显示指定地点位置。虽然之前没弄过，但觉的应该很简单，毕竟按着别人的API调用就好。在国内google地图是用不了了，只能选了百度地图。  首先需要引用百度地图的API1&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;http://api.map.baidu.com/api?v=1.3&amp;quot;&amp;gt;&amp;lt">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js调用百度地图API">
+<meta property="og:url" content="https://yguess.github.io/2016/03/16/js调用百度地图API/index.html">
+<meta property="og:site_name" content="YouGuess">
+<meta property="og:description" content="前几天被要求在页面中调用地图并显示指定地点位置。虽然之前没弄过，但觉的应该很简单，毕竟按着别人的API调用就好。在国内google地图是用不了了，只能选了百度地图。  首先需要引用百度地图的API1&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;http://api.map.baidu.com/api?v=1.3&amp;quot;&amp;gt;&amp;lt">
+<meta property="og:locale" content="zn">
+<meta property="og:image" content="http://img.blog.csdn.net/20160316195513509">
+<meta property="og:updated_time" content="2016-03-16T15:02:12.442Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js调用百度地图API">
+<meta name="twitter:description" content="前几天被要求在页面中调用地图并显示指定地点位置。虽然之前没弄过，但觉的应该很简单，毕竟按着别人的API调用就好。在国内google地图是用不了了，只能选了百度地图。  首先需要引用百度地图的API1&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;http://api.map.baidu.com/api?v=1.3&amp;quot;&amp;gt;&amp;lt">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160316195513509">
+    
+        <link rel="alternate" type="application/atom+xml" title="YouGuess" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">John Doe</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">js调用百度地图API</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">js调用百度地图API</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-03-15T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2016-03-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-js调用百度地图API"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">js调用百度地图API</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-03-16 00:00:00" datetime="2016-03-15T16:00:00.000Z"  itemprop="datePublished">2016-03-16</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>前几天被要求在页面中调用地图并显示指定地点位置。虽然之前没弄过，但觉的应该很简单，毕竟按着别人的API调用就好。<br>在国内google地图是用不了了，只能选了百度地图。</p>
+<hr>
+<p>首先需要引用百度地图的API<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://api.map.baidu.com/api?v=1.3&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>此处的v=1.3是指API的版本，目前百度地图API最高是2.0，而且自1.5版本以后的API，调用时需要到 <a href="http://lbsyun.baidu.com/apiconsole/key/create" target="_blank" rel="external">官方申请</a> 一个开发者的密钥，即为</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://api.map.baidu.com/api?v=2.0&amp;ak=您的密钥&quot;&gt;&lt;/script&gt;
+</code></pre><p>设置1个div用于显示地图，然后再api下开始调用。最后大致如下：</p>
+<pre><code>&lt;div id=&quot;map_address&quot; style=&quot;width: 500px; height: 500px; &quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://api.map.baidu.com/api?v=1.3&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+     var baidu_Point = new BMap.Point(104.066561,30.669561);  //经纬度坐标
+     var marker = new BMap.Marker(baidu_Point);               //标记
+     var pos_info = &quot;&lt;h5&gt;地点&lt;/h5&gt;&quot;
+                         +&quot;&lt;p style=&apos;font-size:12px;&apos;&gt;详细地址&lt;/p&gt;&quot;
+    var infoWindow = new BMap.InfoWindow(pos_info);          //信息展示
+
+    //地图初始化
+    var map = new BMap.Map(&quot;map_address&quot;);
+    map.centerAndZoom(baidu_Point, 20);//第二个参数指地图显示等级，数字越大显示越详细
+    map.addOverlay(marker);
+    map.openInfoWindow(infoWindow,baidu_Point);
+    map.addControl(new BMap.NavigationControl()); //控制工具
+    map.setCurrentCity(&quot;成都&quot;);                    // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);              //开启鼠标滚轮缩放
+&lt;/script&gt;
+</code></pre><p>以上就实现简单的调用，并显示在坐标处显示标志，如图</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20160316195513509" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure>
+<p>确实不难(毕竟不是自己实现-_-!)。</p>
+<hr>
+<p>第一次用肯定会遇到一些小问题的….<br>百度地图查询地址需要的地点坐标</p>
+<pre><code>var baidu_Point = new BMap.Point(104.066561,30.669561);  //经纬度坐标
+</code></pre><p>如上，接收1个经纬度位置。其实也可以接收一个字符串，即查询地。比如</p>
+<pre><code>var baidu_Point = new BMap.Point(&apos;成都市金牛区&apos;);  //地点字符串
+</code></pre><p>我在使用时地点太详细好像有点问题，最后使用经纬度查询。但开始没找到如何获取详细经纬度，所以只好找了google的地图获取了经纬度，但设置好后发现显示位置有偏差！看了 <a href="http://lbsyun.baidu.com/index.php?title=jspopular/guide/introduction" target="_blank" rel="external">官方介绍</a> ,才知道百度使用的坐标不是GPS坐标</p>
+<blockquote>
+<p>国际经纬度坐标标准为WGS-84,国内必须至少使用国测局制定的GCJ-02,对地理位置进行首次加密。百度坐标在此基础上，进行了BD-09二次加密措施,更加保护了个人隐私。百度对外接口的坐标系并不是GPS采集的真实经纬度，需要通过坐标转换接口进行转换。</p>
+</blockquote>
+<p>好吧，原来还要进行地址转换。</p>
+<pre><code>//谷歌坐标
+var x = 116.32715863448607;
+var y = 39.990912172420714;
+var ggPoint = new BMap.Point(x,y);
+
+//地图初始化
+var bm = new BMap.Map(&quot;allmap&quot;);
+bm.centerAndZoom(ggPoint, 15);
+bm.addControl(new BMap.NavigationControl());
+    //坐标转换完之后的回调函数
+translateCallback = function (data){
+  if(data.status === 0) {   
+    bm.setCenter(data.points[0]);
+  }
+}
+
+setTimeout(function(){
+    var convertor = new BMap.Convertor();
+    var pointArr = [];
+    pointArr.push(ggPoint);
+    convertor.translate(pointArr, 3, 5, translateCallback)
+}, 1000);
+</code></pre><p>以上是 <a href="http://developer.baidu.com/map/jsdemo.htm#a5_1" target="_blank" rel="external">官方demo</a> 代码，很简单。</p>
+<hr>
+<p>后来百度发现原来百度自己有 <a href="http://s.suixingpay.com/static/baiduMap/baiduMap.jsp" target="_blank" rel="external">坐标拾取器</a> -_-!用来直接获取经纬度，简直醉了，智商堪忧！<br>附一下<a href="http://developer.baidu.com/map/jsdemo.htm#a5_1" target="_blank" rel="external">百度地图API地址</a>，demo的代码很详细，复制粘贴就能直接使用。<br>虽然不难，学着用用总是好的，在此记录一下！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2016-03-16T15:02:12.442Z" itemprop="dateUpdated">2016-03-16 23:02:12</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/03/16/js调用百度地图API/" target="_blank" rel="external">https://yguess.github.io/2016/03/16/js调用百度地图API/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yguess.github.io">
+            <img src="/img/avatar.jpg" alt="John Doe">
+            John Doe
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2016/03/16/js调用百度地图API/&title=《js调用百度地图API》 — YouGuess&pic=https://yguess.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2016/03/16/js调用百度地图API/&title=《js调用百度地图API》 — YouGuess&source=有想法了就记录一点" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://yguess.github.io/2016/03/16/js调用百度地图API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js调用百度地图API》 — YouGuess&url=https://yguess.github.io/2016/03/16/js调用百度地图API/&via=https://yguess.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://yguess.github.io/2016/03/16/js调用百度地图API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/26/块级格式化上下文/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>John Doe &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2016/03/16/js调用百度地图API/&title=《js调用百度地图API》 — YouGuess&pic=https://yguess.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2016/03/16/js调用百度地图API/&title=《js调用百度地图API》 — YouGuess&source=有想法了就记录一点" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://yguess.github.io/2016/03/16/js调用百度地图API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js调用百度地图API》 — YouGuess&url=https://yguess.github.io/2016/03/16/js调用百度地图API/&via=https://yguess.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://yguess.github.io/2016/03/16/js调用百度地图API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://yguess.github.io/2016/03/16/js调用百度地图API/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
