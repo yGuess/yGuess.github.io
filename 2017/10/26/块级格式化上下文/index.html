@@ -13,16 +13,17 @@
     
     
     
-    <title>No title | YouGuess | youguess13@qq.com</title>
+    <title>初识块级格式化上下文(Block Formatting Contexts) | YouGuess | youguess13@qq.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="css">
     <meta name="description" content="#初识块级格式化上下文(Block Formatting Contexts) ##前言html文档中元素的定位有3种方式(普通流、绝对定位、浮动)，除普通流以外，浮动与绝对定位都会导致元素脱离普通流，按照各自的方式进行定位。带有BFC属性的容器属于普通流的一种。 ##块级格式化上下文 (BFC)块格式化上下文是页面 CSS 视觉渲染的一部分。它是用于决定块盒子的布局及浮动相互影响范围的一个区域。">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="No title">
+<meta property="og:title" content="初识块级格式化上下文(Block Formatting Contexts)">
 <meta property="og:url" content="https://yguess.github.io/2017/10/26/块级格式化上下文/index.html">
 <meta property="og:site_name" content="YouGuess">
 <meta property="og:description" content="#初识块级格式化上下文(Block Formatting Contexts) ##前言html文档中元素的定位有3种方式(普通流、绝对定位、浮动)，除普通流以外，浮动与绝对定位都会导致元素脱离普通流，按照各自的方式进行定位。带有BFC属性的容器属于普通流的一种。 ##块级格式化上下文 (BFC)块格式化上下文是页面 CSS 视觉渲染的一部分。它是用于决定块盒子的布局及浮动相互影响范围的一个区域。">
@@ -35,9 +36,9 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20160328141148969">
 <meta property="og:image" content="http://img.blog.csdn.net/20160328141331393">
 <meta property="og:image" content="http://img.blog.csdn.net/20160328141351549">
-<meta property="og:updated_time" content="2016-03-28T06:20:53.369Z">
+<meta property="og:updated_time" content="2017-10-26T02:16:00.600Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="No title">
+<meta name="twitter:title" content="初识块级格式化上下文(Block Formatting Contexts)">
 <meta name="twitter:description" content="#初识块级格式化上下文(Block Formatting Contexts) ##前言html文档中元素的定位有3种方式(普通流、绝对定位、浮动)，除普通流以外，浮动与绝对定位都会导致元素脱离普通流，按照各自的方式进行定位。带有BFC属性的容器属于普通流的一种。 ##块级格式化上下文 (BFC)块格式化上下文是页面 CSS 视觉渲染的一部分。它是用于决定块盒子的布局及浮动相互影响范围的一个区域。">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20160328140223107">
     
@@ -66,7 +67,7 @@
           <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
-          <h5 class="nickname">John Doe</h5>
+          <h5 class="nickname">YouGuess</h5>
           <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
         </hgroup>
       </div>
@@ -134,7 +135,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis"></div>
+        <div class="flex-col header-title ellipsis">初识块级格式化上下文(Block Formatting Contexts)</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -156,10 +157,10 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title"></h1>
+        <h1 class="title">初识块级格式化上下文(Block Formatting Contexts)</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-10-26T01:55:40.780Z" itemprop="datePublished" class="page-time">
+                <time datetime="2017-10-25T16:00:00.000Z" itemprop="datePublished" class="page-time">
   2017-10-26
 </time>
 
@@ -180,9 +181,9 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title"></h1>
+        <h1 class="post-card-title">初识块级格式化上下文(Block Formatting Contexts)</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-10-26 09:55:40" datetime="2017-10-26T01:55:40.780Z"  itemprop="datePublished">2017-10-26</time>
+            <time class="post-time" title="2017-10-26 00:00:00" datetime="2017-10-25T16:00:00.000Z"  itemprop="datePublished">2017-10-26</time>
 
             
 
@@ -291,7 +292,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2016-03-28T06:20:53.369Z" itemprop="dateUpdated">2016-03-28 14:20:53</time>
+    Last updated: <time datetime="2017-10-26T02:16:00.600Z" itemprop="dateUpdated">2017-10-26 10:16:00</time>
 </span><br>
 
 
@@ -301,8 +302,8 @@
     </div>
     <footer>
         <a href="https://yguess.github.io">
-            <img src="/img/avatar.jpg" alt="John Doe">
-            John Doe
+            <img src="/img/avatar.jpg" alt="YouGuess">
+            YouGuess
         </a>
     </footer>
 </blockquote>
@@ -316,6 +317,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -324,7 +327,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2017/10/26/块级格式化上下文/&title=YouGuess&pic=https://yguess.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2017/10/26/块级格式化上下文/&title=《初识块级格式化上下文(Block Formatting Contexts)》 — YouGuess&pic=https://yguess.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -334,7 +337,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2017/10/26/块级格式化上下文/&title=YouGuess&source=有想法了就记录一点" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2017/10/26/块级格式化上下文/&title=《初识块级格式化上下文(Block Formatting Contexts)》 — YouGuess&source=有想法了就记录一点" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -344,7 +347,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=YouGuess&url=https://yguess.github.io/2017/10/26/块级格式化上下文/&via=https://yguess.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初识块级格式化上下文(Block Formatting Contexts)》 — YouGuess&url=https://yguess.github.io/2017/10/26/块级格式化上下文/&via=https://yguess.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -374,7 +377,7 @@
     <div class="waves-block waves-effect prev">
       <a href="/2017/10/26/宽高获取方式/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">[no title]</h4>
+        <h4 class="title">获取网页中元素所有的宽、高获取方式</h4>
       </a>
     </div>
   
@@ -456,7 +459,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>John Doe &copy; 2015 - 2017</span>
+        <p><span>YouGuess &copy; 2015 - 2017</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -474,7 +477,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2017/10/26/块级格式化上下文/&title=《No title》 — YouGuess&pic=https://yguess.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2017/10/26/块级格式化上下文/&title=《初识块级格式化上下文(Block Formatting Contexts)》 — YouGuess&pic=https://yguess.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -484,7 +487,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2017/10/26/块级格式化上下文/&title=《No title》 — YouGuess&source=有想法了就记录一点" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2017/10/26/块级格式化上下文/&title=《初识块级格式化上下文(Block Formatting Contexts)》 — YouGuess&source=有想法了就记录一点" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -494,7 +497,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — YouGuess&url=https://yguess.github.io/2017/10/26/块级格式化上下文/&via=https://yguess.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初识块级格式化上下文(Block Formatting Contexts)》 — YouGuess&url=https://yguess.github.io/2017/10/26/块级格式化上下文/&via=https://yguess.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
