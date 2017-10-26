@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yguess.github.io/"/>
-  <updated>2017-10-26T02:16:47.378Z</updated>
+  <updated>2017-10-26T02:16:00.600Z</updated>
   <id>https://yguess.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初识块级格式化上下文(Block Formatting Contexts)</title>
+    <link href="https://yguess.github.io/2017/10/26/%E5%9D%97%E7%BA%A7%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
+    <id>https://yguess.github.io/2017/10/26/块级格式化上下文/</id>
+    <published>2017-10-25T16:00:00.000Z</published>
+    <updated>2017-10-26T02:16:00.600Z</updated>
+    
+    <content type="html"><![CDATA[<p>#初识块级格式化上下文(Block Formatting Contexts)</p><p>##前言<br>html文档中元素的定位有3种方式(普通流、绝对定位、浮动)，除普通流以外，浮动与绝对定位都会导致元素脱离普通流，按照各自的方式进行定位。<br>带有BFC属性的容器属于普通流的一种。</p><p>##块级格式化上下文 (BFC)<br>块格式化上下文是页面 CSS 视觉渲染的一部分。它是用于决定块盒子的布局及浮动相互影响范围的一个区域。</p><p>BFC是元素在拥有某些特定属性才显示的一种属性，有BFC特性的元素和其他普通流中的元素在样式上没有区别。但在功能上，具有BFC的容器内部与外部隔离，即容器内部的元素不会再布局上影响外部元素。</p><p>有BFC属性的容器可以包含浮动元素、会阻止外边距折叠、可以阻止元素被浮动元素覆盖。</p><p>##如何触发BFC<br>满足下面任意一个条件的元素会触发BFC:</p><blockquote><ul><li>根元素或其它包含它的元素</li><li>浮动 (元素的 float 不为 none)</li><li>绝对定位元素 (元素的 position 为 absolute 或 fixed)</li><li>行内块 inline-blocks (元素的 display: inline-block)</li><li>表格单元格 (元素的 display: table-cell，HTML表格单元格默认属性)</li><li>表格标题 (元素的 display: table-caption, HTML表格标题默认属性)</li><li>overflow 的值不为 visible的元素</li><li>弹性盒 flex boxes (元素的 display: flex 或 inline-flex)</li></ul></blockquote><p>以上是  <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context" target="_blank" rel="external">MDN</a> 上引发BFC属性的条件。</p><p>需要注意的是，”display:table” 本身并不产生 BFC，而是由它产生匿名框，匿名框中包含 “display:table-cell” 的框会产 BFC。 总之，对于 “display:table” 的元素，产生 BFC 的是匿名框而不是 “display:table”。</p><p>##BFC特性</p><p>###1. BFC可以包含浮动元素<br>通常，浮动的元素会脱离普通流，不仅会影响兄弟元素，也会影响父容器以及父容器兄弟元素。对于父容器，最直观的就是会使父容器高度塌陷<br><img src="http://img.blog.csdn.net/20160328140223107" alt="未浮动"></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328140318873" alt="浮动" title="">                </div>                <div class="image-caption">浮动</div>            </figure><p>给父容器添加overflow:hidden属性，使其引起BFC属性.<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328140822782" alt="这里写图片描述" title="">                </div>                <div class="image-caption">这里写图片描述</div>            </figure></p><p>###2. 阻止外边距折叠<br>两个相连的 div 在垂直上的外边距会发生叠加。<br><br>详细的解释：仅当两个块级元素相邻并且在同一个块级格式化上下文时，它们垂直方向之间的外边距才会叠加。也就是说，即便两个块级元素相邻，但当它们不在同一个块级格式化上下文时它们的边距也不会折叠。因此，阻止外边距折叠只需产生新的 BFC 。</p><p>这里父容器的上下设置了20px的外边距，而p元素有1em的上下外边距。可以看到第一个p元素与父容器顶部没有间距，两者外边距产生重叠。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328140845422" alt="外边折叠" title="">                </div>                <div class="image-caption">外边折叠</div>            </figure><br>父容器添加overflow:hidden属性，使其引起BFC属性.这里仅第一个p元素与父容器的外边距未折叠，p元素之间外边距折叠。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328140945576" alt="p元素外边距未折叠" title="">                </div>                <div class="image-caption">p元素外边距未折叠</div>            </figure><br>将中间的p元素用一个div包裹，并添加overflow:hidden属性，使其引起BFC属性.<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328141148969" alt="这里写图片描述" title="">                </div>                <div class="image-caption">这里写图片描述</div>            </figure></p><p>###3. 阻止元素被浮动元素覆盖<br>上面说过，浮动元素会对兄弟元素造成影响。若兄弟元素是块级元素，则会与浮动元素重叠，位于浮动元素之下。若为内联元素，则依次从左至右排列。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328141331393" alt="覆盖" title="">                </div>                <div class="image-caption">覆盖</div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328141351549" alt="未覆盖" title="">                </div>                <div class="image-caption">未覆盖</div>            </figure></p><p>但是若子元素display:inline-block，则子元素宽度之和大于父容器宽度，则最后宽度相加超过父容器宽度的子元素换行显示。</p><p>##BFC处理浮动<br>通常我们清除浮动，方法有几种：</p><ul><li><ol><li>设置空div</li></ol><p>在父容器末尾添加空div,并设置clear:both清除浮动。这样很方便，但违背结构与表象分离的原则。</p></li><li><ol><li>设置overflow </li></ol><p>虽然设置其他属性也能引发BFC属性，但会对布局造成一些影响。设置overflow:hidden的影响相对较小，但在子元素的过大时，超出部分会被覆盖掉，设置auto或scroll又会产生滚动条。</p></li><li><ol><li>:after伪元素 </li></ol><p>通过为容器添加:after伪元素，并给伪元素设置overflow属性，添加IEhack，实现清除浮动。也是网上使用比较多的方法。<br>.clearfix{(<em>zoom: 1;}<br>.clearfix:after{content:’’;height:0;display:block; clear:both;/overflow:hidden;  /\</em>clear,overflow二选其一*/}</p></li></ul><p>##IE6、7下的BFC<br>由于早期IE6、7对于不支持BFC,所以需要通过IEhack解决。在IE6、7中，通过触发hasLayout私有属性实现BFC效果。从使用上看，hasLayout私有属性和BFC触发方式都是通过特有属性触发，IE6、7中大多通过设置zoom:1;触发，zoom用于设置或检索元素缩放比例，值1表示元素实际尺寸，所以设置1不会对元素显示造成影响。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;#初识块级格式化上下文(Block Formatting Contexts)&lt;/p&gt;
+&lt;p&gt;##前言&lt;br&gt;html文档中元素的定位有3种方式(普通流、绝对定位、浮动)，除普通流以外，浮动与绝对定位都会导致元素脱离普通流，按照各自的方式进行定位。&lt;br&gt;带有BFC属性的容器
+      
+    
+    </summary>
+    
+    
+      <category term="css" scheme="https://yguess.github.io/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>获取网页中元素所有的宽、高获取方式</title>
@@ -38,30 +62,6 @@
     
     
       <category term="js" scheme="https://yguess.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>初识块级格式化上下文(Block Formatting Contexts)</title>
-    <link href="https://yguess.github.io/2017/10/26/%E5%9D%97%E7%BA%A7%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
-    <id>https://yguess.github.io/2017/10/26/块级格式化上下文/</id>
-    <published>2017-10-25T16:00:00.000Z</published>
-    <updated>2017-10-26T02:16:00.600Z</updated>
-    
-    <content type="html"><![CDATA[<p>#初识块级格式化上下文(Block Formatting Contexts)</p><p>##前言<br>html文档中元素的定位有3种方式(普通流、绝对定位、浮动)，除普通流以外，浮动与绝对定位都会导致元素脱离普通流，按照各自的方式进行定位。<br>带有BFC属性的容器属于普通流的一种。</p><p>##块级格式化上下文 (BFC)<br>块格式化上下文是页面 CSS 视觉渲染的一部分。它是用于决定块盒子的布局及浮动相互影响范围的一个区域。</p><p>BFC是元素在拥有某些特定属性才显示的一种属性，有BFC特性的元素和其他普通流中的元素在样式上没有区别。但在功能上，具有BFC的容器内部与外部隔离，即容器内部的元素不会再布局上影响外部元素。</p><p>有BFC属性的容器可以包含浮动元素、会阻止外边距折叠、可以阻止元素被浮动元素覆盖。</p><p>##如何触发BFC<br>满足下面任意一个条件的元素会触发BFC:</p><blockquote><ul><li>根元素或其它包含它的元素</li><li>浮动 (元素的 float 不为 none)</li><li>绝对定位元素 (元素的 position 为 absolute 或 fixed)</li><li>行内块 inline-blocks (元素的 display: inline-block)</li><li>表格单元格 (元素的 display: table-cell，HTML表格单元格默认属性)</li><li>表格标题 (元素的 display: table-caption, HTML表格标题默认属性)</li><li>overflow 的值不为 visible的元素</li><li>弹性盒 flex boxes (元素的 display: flex 或 inline-flex)</li></ul></blockquote><p>以上是  <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context" target="_blank" rel="external">MDN</a> 上引发BFC属性的条件。</p><p>需要注意的是，”display:table” 本身并不产生 BFC，而是由它产生匿名框，匿名框中包含 “display:table-cell” 的框会产 BFC。 总之，对于 “display:table” 的元素，产生 BFC 的是匿名框而不是 “display:table”。</p><p>##BFC特性</p><p>###1. BFC可以包含浮动元素<br>通常，浮动的元素会脱离普通流，不仅会影响兄弟元素，也会影响父容器以及父容器兄弟元素。对于父容器，最直观的就是会使父容器高度塌陷<br><img src="http://img.blog.csdn.net/20160328140223107" alt="未浮动"></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328140318873" alt="浮动" title="">                </div>                <div class="image-caption">浮动</div>            </figure><p>给父容器添加overflow:hidden属性，使其引起BFC属性.<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328140822782" alt="这里写图片描述" title="">                </div>                <div class="image-caption">这里写图片描述</div>            </figure></p><p>###2. 阻止外边距折叠<br>两个相连的 div 在垂直上的外边距会发生叠加。<br><br>详细的解释：仅当两个块级元素相邻并且在同一个块级格式化上下文时，它们垂直方向之间的外边距才会叠加。也就是说，即便两个块级元素相邻，但当它们不在同一个块级格式化上下文时它们的边距也不会折叠。因此，阻止外边距折叠只需产生新的 BFC 。</p><p>这里父容器的上下设置了20px的外边距，而p元素有1em的上下外边距。可以看到第一个p元素与父容器顶部没有间距，两者外边距产生重叠。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328140845422" alt="外边折叠" title="">                </div>                <div class="image-caption">外边折叠</div>            </figure><br>父容器添加overflow:hidden属性，使其引起BFC属性.这里仅第一个p元素与父容器的外边距未折叠，p元素之间外边距折叠。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328140945576" alt="p元素外边距未折叠" title="">                </div>                <div class="image-caption">p元素外边距未折叠</div>            </figure><br>将中间的p元素用一个div包裹，并添加overflow:hidden属性，使其引起BFC属性.<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328141148969" alt="这里写图片描述" title="">                </div>                <div class="image-caption">这里写图片描述</div>            </figure></p><p>###3. 阻止元素被浮动元素覆盖<br>上面说过，浮动元素会对兄弟元素造成影响。若兄弟元素是块级元素，则会与浮动元素重叠，位于浮动元素之下。若为内联元素，则依次从左至右排列。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328141331393" alt="覆盖" title="">                </div>                <div class="image-caption">覆盖</div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img.blog.csdn.net/20160328141351549" alt="未覆盖" title="">                </div>                <div class="image-caption">未覆盖</div>            </figure></p><p>但是若子元素display:inline-block，则子元素宽度之和大于父容器宽度，则最后宽度相加超过父容器宽度的子元素换行显示。</p><p>##BFC处理浮动<br>通常我们清除浮动，方法有几种：</p><ul><li><ol><li>设置空div</li></ol><p>在父容器末尾添加空div,并设置clear:both清除浮动。这样很方便，但违背结构与表象分离的原则。</p></li><li><ol><li>设置overflow </li></ol><p>虽然设置其他属性也能引发BFC属性，但会对布局造成一些影响。设置overflow:hidden的影响相对较小，但在子元素的过大时，超出部分会被覆盖掉，设置auto或scroll又会产生滚动条。</p></li><li><ol><li>:after伪元素 </li></ol><p>通过为容器添加:after伪元素，并给伪元素设置overflow属性，添加IEhack，实现清除浮动。也是网上使用比较多的方法。<br>.clearfix{(<em>zoom: 1;}<br>.clearfix:after{content:’’;height:0;display:block; clear:both;/overflow:hidden;  /\</em>clear,overflow二选其一*/}</p></li></ul><p>##IE6、7下的BFC<br>由于早期IE6、7对于不支持BFC,所以需要通过IEhack解决。在IE6、7中，通过触发hasLayout私有属性实现BFC效果。从使用上看，hasLayout私有属性和BFC触发方式都是通过特有属性触发，IE6、7中大多通过设置zoom:1;触发，zoom用于设置或检索元素缩放比例，值1表示元素实际尺寸，所以设置1不会对元素显示造成影响。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;#初识块级格式化上下文(Block Formatting Contexts)&lt;/p&gt;
-&lt;p&gt;##前言&lt;br&gt;html文档中元素的定位有3种方式(普通流、绝对定位、浮动)，除普通流以外，浮动与绝对定位都会导致元素脱离普通流，按照各自的方式进行定位。&lt;br&gt;带有BFC属性的容器
-      
-    
-    </summary>
-    
-    
-      <category term="css" scheme="https://yguess.github.io/tags/css/"/>
     
   </entry>
   
