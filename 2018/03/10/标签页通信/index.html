@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>No title | YouGuess | youguess13@qq.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="title: Viewportdate: 2016-8-10tag: javascript  #js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。 ###不跨域的通信   ####1.1 iframe嵌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="https://yguess.github.io/2018/03/10/标签页通信/index.html">
+<meta property="og:site_name" content="YouGuess">
+<meta property="og:description" content="title: Viewportdate: 2016-8-10tag: javascript  #js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。 ###不跨域的通信   ####1.1 iframe嵌">
+<meta property="og:locale" content="zn">
+<meta property="og:updated_time" content="2018-03-10T06:14:51.439Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="title: Viewportdate: 2016-8-10tag: javascript  #js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。 ###不跨域的通信   ####1.1 iframe嵌">
+    
+        <link rel="alternate" type="application/atom+xml" title="YouGuess" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/my_avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">YouGuess</h5>
+          <a href="mailto:youguess13@qq.com" title="youguess13@qq.com" class="mail">youguess13@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">No title</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">No title</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-10T06:08:29.417Z" itemprop="datePublished" class="page-time">
+  2018-03-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-标签页通信"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">No title</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-10 14:08:29" datetime="2018-03-10T06:08:29.417Z"  itemprop="datePublished">2018-03-10</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>title: Viewport<br>date: 2016-8-10<br>tag: javascript</p>
+<hr>
+<p>#js中的页面间通信<br>本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。<br>一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。<br>页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。</p>
+<p>###不跨域的通信  </p>
+<p>####1.1 iframe嵌套<br>有些页面会通过iframe标签嵌套页面，嵌套页面即作为子页面。父与子页面之间的通信很简单。  </p>
+<pre><code>&lt;!-- 父页面 postMessage.html --&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;input id=&quot;msg&quot; type=&quot;text&quot; placeholder=&quot;再次输入信息&quot;/&gt;
+        &lt;input type=&quot;button&quot; value=&quot;发送消息&quot; onclick=&quot;sendMsg()&quot;/&gt;
+        &lt;!-- 子页面 getMessage.html --&gt;
+        &lt;iframe src=&quot;getMessage.html&quot;&gt;&lt;/iframe&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- 子页面 getMessage.html--&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h3&gt;这里是getMessage.html&lt;/h3&gt;
+        &lt;div id=&quot;show-msg&quot;&gt;&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>代码:  </p>
+<pre><code>&lt;script&gt;
+    function sentMsg(){
+        var msg = document.querySelector(&apos;#msg&apos;);
+        var data = msg.value;
+        window.frames[0].document.querySelector(&apos;#show-msg&apos;).innerHTML = data;
+    }
+&lt;/script&gt;  
+</code></pre><p>在父页面中的input中输入内容,点击发送,在子页面中就会显示对应内容。<br>当然,如果父页面中存在多个iframe,只需通过window.frame找到对应的ifrmae,如上传递内容就可以了。  </p>
+<p>####1.2 跨标签页通信 window.open<br>有时候,当在一个页面中点击链接，打开了一个新的页面，两个页面在相同的域下，可以实现标签页之间的通讯.</p>
+<pre><code>&lt;!-- 父页面 postMessage.html --&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;input type=&quot;button&quot; value=&quot;发送消息&quot; onclick=&quot;sendMsg()&quot;/&gt;
+        &lt;a href=&quot;getMessage.html&quot; target=&quot;_blank&quot; onclick=&quot;toPage(event)&quot;&gt;点击&lt;/a&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>代码:</p>
+<pre><code>&lt;!-- 父页面 postMessage.html --&gt;
+&lt;script&gt;
+    var newPage;
+    function toPage(evt){
+        evt.preventDefault(); //阻止默认事件
+        var url = evt.target.getAttribute(&apos;href&apos;);
+        newPage = window.open(url,&apos;newPage&apos;);
+    }
+    function sentMsg(){
+        newPage.document.querySelector(&apos;#msg&apos;).innerHTML = &apos;这是postMessage发来的信息&apos;;
+    }
+&lt;/script&gt;
+
+&lt;!-- 子页面 getMessage.html --&gt;
+&lt;script&gt;
+    window.addEventListener(&apos;load&apos;,function(evt){
+        opener.document.querySelector(&apos;#show-msg&apos;).innerHTML = &apos;load好子页面了&apos;;
+    },false);
+&lt;/script&gt;  
+</code></pre><p>当在postMessage.html页面里点击链接,通过window.open方法打开一个新的页面,如父子页面满足”同源策略”则该方法会返回创建窗口的window对象的引用。getMessage.html添加侦听load事件,通过window.opener获取创建该窗口的window对象的引用,通过该引用可以控制该页面里元素。  </p>
+<p>关于window.open()和window.opener()参见MDN的<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open" target="_blank" rel="external">window.open</a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/opener" target="_blank" rel="external">window.opener</a>。</p>
+<p>###跨域通信<br>有时候我们希望能够在不同的域名之间传递数据,但由于浏览器的<a href="http://baike.baidu.com/link?url=1fU9fksoPuJ4PKsH0MwjZXjzkrWTAPjH3pxWCxg3ujz8d5Rrvy1dEXCsxslmSMfUw6bMpHbdBmxRLk47SMPesq" target="_blank" rel="external">“同源策略”</a>,不同域之间的通信只能通过一些技巧来实现。以下是对是否是同源情况的判断:</p>
+<p><table></table></p>
+<p><thead></thead></p>
+<p><tr><br>  <th align="center">编号</th><br>  <th align="center">URL</th><br>  <th align="center">说明</th><br>  <th align="center">是否允许通信</th><br></tr><br></p>
+<p><tbody><tr><br>  <td align="center">1</td><br>  <td align="center"><a href="http://www.a.com/a.js" target="_blank" rel="external">http://www.a.com/a.js</a><br><a href="http://www.a.com/b.js" target="_blank" rel="external">http://www.a.com/b.js</a></td><br>  <td align="center">同一域名下</td><br>  <td align="center">允许</td><br></tr></tbody></p>
+<p><tr><br>  <td align="center">2</td><br>  <td align="center"><a href="http://www.a.com/a/a.js" target="_blank" rel="external">http://www.a.com/a/a.js</a><br><a href="http://www.a.com/b/b.js" target="_blank" rel="external">http://www.a.com/b/b.js</a></td><br>  <td align="center">同一域名下不同文件夹</td><br>  <td align="center">允许</td><br></tr></p>
+<p><tr><br>  <td align="center">3</td><br>  <td align="center"><a href="http://www.a.com:8000/a.js" target="_blank" rel="external">http://www.a.com:8000/a.js</a><br><a href="http://www.a.com/b.js" target="_blank" rel="external">http://www.a.com/b.js</a></td><br>  <td align="center">同一域名，不同端口</td><br>  <td align="center">不允许</td><br></tr></p>
+<p><tr><br>  <td align="center">4</td><br>  <td align="center"><a href="http://www.a.com/a.js" target="_blank" rel="external">http://www.a.com/a.js</a><br><a href="https://www.a.com/b.js" target="_blank" rel="external">https://www.a.com/b.js</a></td><br>  <td align="center">同一域名，不同协议</td><br>  <td align="center">不允许</td><br></tr></p>
+<p><tr><br>  <td align="center">5</td><br>  <td align="center"><a href="http://www.a.com/a.js" target="_blank" rel="external">http://www.a.com/a.js</a><br><a href="http://127.0.0.1/b.js" target="_blank" rel="external">http://127.0.0.1/b.js</a></td><br>  <td align="center">域名和域名对应ip</td><br>  <td align="center">不允许</td><br></tr></p>
+<p><tr><br>  <td align="center">6</td><br>  <td align="center"><a href="http://www.a.com/a.js" target="_blank" rel="external">http://www.a.com/a.js</a><br><a href="http://will.a.com/b.js" target="_blank" rel="external">http://will.a.com/b.js</a></td><br>  <td align="center">主域相同，子域不同</td><br>  <td align="center">不允许</td><br></tr></p>
+<p><tr><br>  <td align="center">7</td><br>  <td align="center"><a href="http://www.a.com/a.js" target="_blank" rel="external">http://www.a.com/a.js</a><br><a href="http://a.com/b.js" target="_blank" rel="external">http://a.com/b.js</a></td><br>  <td align="center">同一域名，不同二级域名（同上）</td><br>  <td align="center">不允许（cookie这种情况下也不允许访问）</td><br></tr></p>
+<p><tr><br>  <td align="center">8</td><br>  <td align="center"><a href="http://www.a.com/a.js" target="_blank" rel="external">http://www.a.com/a.js</a><br><a href="http://www.b.com/b.js" target="_blank" rel="external">http://www.b.com/b.js</a></td><br>  <td align="center">不同域名</td><br>  <td align="center">不允许</td><br></tr><br><br>一般跨域传递数据有3种方法,jsonp、document.domain、window.name来实现。不过，这三种方法都有各自的限制。  </p>
+<p>####2.1 jsonp实现<br>jsonp全称是”json padding”，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">json</a>想必已经很清楚了,如果忘了就点击自己重新复习吧。JSONP是一种使用JSON数据的方式，返回的不是JSON对象，是包含JSON对象的javaScript脚本。<br>由于常规使用XMLHttpRequest请求只允许同域下的资源,但是script标签加载js文件却可以跨域加载，比如img标签也可以。通过使用script标签来进行跨域请求，并在响应中返回要执行的script代码，其中可以直接使用JSON传递 javascript对象。即在跨域的服务端生成JSON数据，然后包装成script脚本回传，就不用突破同源策略的限制，解决了跨域访问的问题。  </p>
+<pre><code>&lt;script&gt;
+    function callback(data){
+        //处理数据
+
+    }
+    var jsonP = document.createElement(&apos;script&apos;);
+    jsonP.src = &apos;http://demo.com/server.php?req=callback&apos;;//域名随意起的
+    document.body.appendChild(jsonP);
+&lt;/script&gt;
+</code></pre><p>服务器端的响应代码:  </p>
+<pre><code>&lt;?php 
+    $req = $_GET[&apos;req&apos;];
+    $data = array(
+        &apos;data&apos;=&gt;&apos;这是请求的数据&apos;
+    );
+    echo $req.&quot;(json_encode($data))&quot;;
+?&gt;
+</code></pre><p>这其实就是JSONP的简单实现。客户端创建一个回调函数，然后在远程服务上调用这个函数并且将JSON 数据形式作为参数传递，完成回调。即将服务器的json数据填充(padding)作为回调函数的参数。<br>jsonp方式跨域也有缺陷,首先只能是通过GET方式请求数据,若操作成功,就顺利执行。出现失败则不会有提示,例如不能从服务器捕捉到 404 错误，也不能取消或重新开始请求。当然超时后就不用管他了。同时也需要服务器相应的配合,处理请求才行。</p>
+<p>####2.2 document.domain<br>每一个页面都有document.domain属性,调用这个属性,返回当前文档的域名。也可以对该属性进行赋值，不过值必须是包含基础域名的值(必须属于同一个基础域名!而且所用的协议，端口都要一致)。<br>例如：</p>
+<pre><code>//http://willing.a.com/a.html与http://will.a.com/b.html
+//a.html
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script&gt;
+            docuemnt.domain = &apos;a.com&apos;;
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;frame src=&quot;http://will.a.com/b.html&quot;&gt;&lt;/iframe&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+//b.html
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script&gt;
+            docuemnt.domain = &apos;a.com&apos;;
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>两个页面处于同一个基础域名下不同子域名下,他们之间js跨域(子域)相互调用，需要在head标签中显式设置同一基础域名,否则会失败。<br>通过这种方式，可以实现跨子域的数据传递，而无法实现跨基础域名的数据传递。<br>另外,Html5的localStorage也可以通过设置document.domain实现跨子域的数据传递。  </p>
+<p>####2.3 window.name<br>每个标签在打开的时候都会存在window.name属性,若没有设置一般为空。window.open函数调用时传递的第二参数即为指定创建窗口的name值。<br>浏览器中当一个标签页打开到关闭之间,window.name的值不变,即使在期间访问了不同域名的网站,name值都是空或手动设置的值。在浏览器控制台输入代码:</p>
+<pre><code>window.name = &apos;YouGuess&apos;;
+location.href = &apos;http://www.qq.com&apos;;  
+</code></pre><p>在一个页面中通过iframe嵌入的跨域页面,也可以实现跨域传值,不过该值的大小有所限制(大约2M)。  </p>
+<pre><code>&lt;!-- 父页面 postMessage.html --&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;show-msg&quot;&gt;&lt;/div&gt;
+        &lt;input type=&quot;button&quot; value=&quot;获取子页面name&quot; onclick=&quot;getChildName()&quot;/&gt;
+        &lt;!-- 子页面 getMessage.html --&gt;
+        &lt;iframe src=&quot;www.baidu.com&quot;&gt;&lt;/iframe&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- 子页面 getMessage.html--&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre><p>代码：</p>
+<pre><code>&lt;script&gt;
+    &lt;!-- 父页面 postMessage.html --&gt;
+    function getChildName(){
+        var show = document.querySelector(&apos;#show-msg&apos;);
+        var childName = window.frames[0].contentWidth.name;
+        show.innerHTML = childName;
+    }
+
+    &lt;!-- 子页面 getMessage.html--&gt;
+    window.addEventListener(&apos;load&apos;,function(){
+        window.name = &apos;YouGuess&apos;;
+    })
+&lt;/script&gt;  
+</code></pre><p>当在iframe中的页面设置好name的值,点击父页面的按键,即可显示子页面的name属性。</p>
+<p>###3. HTML5的postMessage<br>HTML5提供了<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage" target="_blank" rel="external">postMessage</a>方法，该方法既可以跨域通信也可以用来不跨域的通信，不过在IE中目前只支持IE8+，其他浏览器基本全面支持。</p>
+<blockquote>
+<p>otherWindow.postMessage(data,origin)<br>       -targetSrc指目标窗口或iframe<br>       -data指要传递的数据，html5规范可以使js的任意基本类型和可复制对象(ie8、9除外)<br>       -origin指明目标窗口的源(协议+主机+端口号[+URL]，URL会被忽略，所以可以不写)定和当前窗口同源的话设置为”/“,若”*”则代表任何页面。</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-03-10T06:14:51.439Z" itemprop="dateUpdated">2018-03-10 14:14:51</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/03/10/标签页通信/" target="_blank" rel="external">https://yguess.github.io/2018/03/10/标签页通信/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yguess.github.io">
+            <img src="/img/my_avatar.jpg" alt="YouGuess">
+            YouGuess
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2018/03/10/标签页通信/&title=《No title》 — YouGuess&pic=https://yguess.github.io/img/my_avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2018/03/10/标签页通信/&title=《No title》 — YouGuess&source=有想法了就记录一点" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://yguess.github.io/2018/03/10/标签页通信/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — YouGuess&url=https://yguess.github.io/2018/03/10/标签页通信/&via=https://yguess.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://yguess.github.io/2018/03/10/标签页通信/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/03/10/Vue组件的Data/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Viewport</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>YouGuess &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2018/03/10/标签页通信/&title=《No title》 — YouGuess&pic=https://yguess.github.io/img/my_avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2018/03/10/标签页通信/&title=《No title》 — YouGuess&source=有想法了就记录一点" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://yguess.github.io/2018/03/10/标签页通信/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — YouGuess&url=https://yguess.github.io/2018/03/10/标签页通信/&via=https://yguess.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://yguess.github.io/2018/03/10/标签页通信/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://yguess.github.io/2018/03/10/标签页通信/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'YouGuess在这里！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -102,7 +102,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -136,11 +136,11 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-块级格式化上下文"
+            <article id="post-标签页通信"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-10-26 00:00:00" datetime="2017-10-25T16:00:00.000Z"  itemprop="datePublished">2017-10-26</time>
+        <time class="post-time" title="2018-03-10 14:08:29" datetime="2018-03-10T06:08:29.417Z"  itemprop="datePublished">2018-03-10</time>
 
         
 
@@ -152,7 +152,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/26/块级格式化上下文/">初识块级格式化上下文(Block Formatting Contexts)</a>
+      <a class="post-title-link" href="/2018/03/10/标签页通信/">No title</a>
     </h3>
   
 
@@ -162,19 +162,220 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        #初识块级格式化上下文(Block Formatting Contexts)
-##前言html文档中元素的定位有3种方式(普通流、绝对定位、浮动)，除普通流以外，浮动与绝对定位都会导致元素脱离普通流，按照各自的方式进行定位。带有BFC属性的容器属于普通流的一种。
-##块级格式化上下文 (BFC)块格式化上下文是页面 CSS 视觉渲染的一部分。它是用于决定块盒子的布局及浮动相互影响范围的一个区...
+        title: Viewportdate: 2016-8-10tag: javascript
+
+#js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。
+###不跨域的通信  
+####1.1 ifra...
     
 
-        <a href="/2017/10/26/块级格式化上下文/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/03/10/标签页通信/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Vue组件的Data"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-03-10 00:00:00" datetime="2018-03-09T16:00:00.000Z"  itemprop="datePublished">2018-03-10</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/03/10/Vue组件的Data/">Viewport</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Vue组件的data的函数在使用vue开发时，data通常都是一个Object。而在创建Vue组件时，官文文档要求data必须是一个函数，并推荐以下形式： 
+
+    data(){
+        return {}
+    }
+
+
+开始不是很明白，官方给了例子。说实话因为自己反应比较慢，开始没怎么理解意思。后面看了别人的分析才明白。
+其实官方例子的意思是：Vue组件中，如果data是一个...
+    
+
+        <a href="/2018/03/10/Vue组件的Data/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-转盘的简单实现"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-02-25 00:00:00" datetime="2018-02-24T16:00:00.000Z"  itemprop="datePublished">2018-02-25</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/02/25/转盘的简单实现/">转盘的简单实现</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        转盘的简单实现通过代码实现抽奖的转盘，使用html、css、js实现(并未使用canvas)。参考例子：JS写的一个抽奖小Demo从普通写法到设计模式再向ES6的进阶路程。
+实现样式实现ul是转盘部分，将转盘划分成12份。pointer则是点击转动部分。主要的html结构如下：
+
+&lt;ul class=&quot;turntable&quot;&gt;
+    &lt;li&gt;&lt...
+    
+
+        <a href="/2018/02/25/转盘的简单实现/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-es6函数参数默认值的作用域"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-11-17 00:00:00" datetime="2017-11-16T16:00:00.000Z"  itemprop="datePublished">2017-11-17</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/11/17/es6函数参数默认值的作用域/">es6函数参数</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        在阮一峰的《es6入门》中，关于函数参数存在默认值时，有如下的代码
+
+// 代码1
+var x = 1;
+function foo(x, y = function() { x = 2; }) {
+  var x = 3;
+  y();
+  console.log(x);
+}
+
+foo() // 3
+x // 1
+
+这里按理说开始以为y内部的x指向的是外部环境下的x,即x=1。然而实际却不是。...
+    
+
+        <a href="/2017/11/17/es6函数参数默认值的作用域/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-viewport"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-11-17 00:00:00" datetime="2017-11-16T16:00:00.000Z"  itemprop="datePublished">2017-11-17</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/11/17/viewport/">Viewport</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Viewport学习记录在开发移动端项目时，以前都只知道在head中添加以下代码就可以使得在web的页面在移动端也显示的相对好看点，但具体不是很清楚原理。&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale...
+    
+
+        <a href="/2017/11/17/viewport/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
     </div>
     
@@ -215,13 +416,108 @@
     
 
         <a href="/2017/10/26/宽高获取方式/" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-块级格式化上下文"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-10-26 00:00:00" datetime="2017-10-25T16:00:00.000Z"  itemprop="datePublished">2017-10-26</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/10/26/块级格式化上下文/">初识块级格式化上下文(Block Formatting Contexts)</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        #初识块级格式化上下文(Block Formatting Contexts)
+##前言html文档中元素的定位有3种方式(普通流、绝对定位、浮动)，除普通流以外，浮动与绝对定位都会导致元素脱离普通流，按照各自的方式进行定位。带有BFC属性的容器属于普通流的一种。
+##块级格式化上下文 (BFC)块格式化上下文是页面 CSS 视觉渲染的一部分。它是用于决定块盒子的布局及浮动相互影响范围的一个区...
+    
+
+        <a href="/2017/10/26/块级格式化上下文/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-call、apply、bind"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-07-26 00:00:00" datetime="2016-07-25T16:00:00.000Z"  itemprop="datePublished">2016-07-26</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/07/26/call、apply、bind/">Call Apply 和 Bind小结</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        #Call Apply 和 Bind小结
+###1.Call()call()方法在使用一个指定的this值和若干个指定的参数值的前提下调用某个函数或方法.  
+fun.call(thisArg[, arg1[, arg2[, ...]]])  
+该方法接受的第一个参数为指定的替换对象，在非严格模式下若值为null或undefined,则会默认指向全局对象window.后面接受一连串的值作为参...
+    
+
+        <a href="/2016/07/26/call、apply、bind/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
     </div>
     
@@ -262,7 +558,7 @@
     
 
         <a href="/2016/03/16/js调用百度地图API/" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -290,11 +586,11 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>YouGuess &copy; 2015 - 2017</span>
+        <p><span>YouGuess &copy; 2015 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

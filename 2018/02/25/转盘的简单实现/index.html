@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>转盘的简单实现 | YouGuess | youguess13@qq.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="javascript">
+    <meta name="description" content="转盘的简单实现通过代码实现抽奖的转盘，使用html、css、js实现(并未使用canvas)。参考例子：JS写的一个抽奖小Demo从普通写法到设计模式再向ES6的进阶路程。 实现样式实现ul是转盘部分，将转盘划分成12份。pointer则是点击转动部分。主要的html结构如下：  &amp;lt;ul class=&amp;quot;turntable&amp;quot;&amp;gt;     &amp;lt;li&amp;gt;&amp;lt;sp">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="转盘的简单实现">
+<meta property="og:url" content="https://yguess.github.io/2018/02/25/转盘的简单实现/index.html">
+<meta property="og:site_name" content="YouGuess">
+<meta property="og:description" content="转盘的简单实现通过代码实现抽奖的转盘，使用html、css、js实现(并未使用canvas)。参考例子：JS写的一个抽奖小Demo从普通写法到设计模式再向ES6的进阶路程。 实现样式实现ul是转盘部分，将转盘划分成12份。pointer则是点击转动部分。主要的html结构如下：  &amp;lt;ul class=&amp;quot;turntable&amp;quot;&amp;gt;     &amp;lt;li&amp;gt;&amp;lt;sp">
+<meta property="og:locale" content="zn">
+<meta property="og:image" content="https://yguess.github.io/2018/02/25/images/zhuanpan1.png">
+<meta property="og:image" content="https://yguess.github.io/2018/02/25/images/zhuanpan2.png">
+<meta property="og:image" content="https://yguess.github.io/2018/02/25/images/zhuanpan3.gif">
+<meta property="og:updated_time" content="2018-03-10T06:15:23.156Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="转盘的简单实现">
+<meta name="twitter:description" content="转盘的简单实现通过代码实现抽奖的转盘，使用html、css、js实现(并未使用canvas)。参考例子：JS写的一个抽奖小Demo从普通写法到设计模式再向ES6的进阶路程。 实现样式实现ul是转盘部分，将转盘划分成12份。pointer则是点击转动部分。主要的html结构如下：  &amp;lt;ul class=&amp;quot;turntable&amp;quot;&amp;gt;     &amp;lt;li&amp;gt;&amp;lt;sp">
+<meta name="twitter:image" content="https://yguess.github.io/2018/02/25/images/zhuanpan1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="YouGuess" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/my_avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">YouGuess</h5>
+          <a href="mailto:youguess13@qq.com" title="youguess13@qq.com" class="mail">youguess13@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">转盘的简单实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">转盘的简单实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-24T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-02-25
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#转盘的简单实现"><span class="post-toc-number">1.</span> <span class="post-toc-text">转盘的简单实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#样式实现"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">样式实现</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#转盘转动实现"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">转盘转动实现</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-转盘的简单实现"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">转盘的简单实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-25 00:00:00" datetime="2018-02-24T16:00:00.000Z"  itemprop="datePublished">2018-02-25</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="转盘的简单实现"><a href="#转盘的简单实现" class="headerlink" title="转盘的简单实现"></a>转盘的简单实现</h3><p>通过代码实现抽奖的转盘，使用html、css、js实现(并未使用canvas)。参考例子：<a href="https://juejin.im/post/5a2dd40bf265da43176a1482" target="_blank" rel="external">JS写的一个抽奖小Demo从普通写法到设计模式再向ES6的进阶路程</a>。</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><h5 id="样式实现"><a href="#样式实现" class="headerlink" title="样式实现"></a>样式实现</h5><p>ul是转盘部分，将转盘划分成12份。pointer则是点击转动部分。主要的html结构如下：</p>
+<blockquote>
+<pre><code>&lt;ul class=&quot;turntable&quot;&gt;
+    &lt;li&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(30deg);&quot;&gt;&lt;span&gt;2&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(60deg);&quot;&gt;&lt;span&gt;3&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(90deg);&quot;&gt;&lt;span&gt;4&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(120deg);&quot;&gt;&lt;span&gt;5&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(150deg);&quot;&gt;&lt;span&gt;6&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(180deg);&quot;&gt;&lt;span&gt;7&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(210deg);&quot;&gt;&lt;span&gt;8&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(240deg);&quot;&gt;&lt;span&gt;9&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(270deg);&quot;&gt;&lt;span&gt;10&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(300deg);&quot;&gt;&lt;span&gt;11&lt;/span&gt;&lt;/li&gt;
+    &lt;li style=&quot;transform: rotateZ(330deg);&quot;&gt;&lt;span&gt;12&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;pointer&quot; &gt;
+    &lt;p onclick=&quot;startRotate()&quot;&gt;开始抽奖&lt;/p&gt;
+&lt;/div&gt;    
+</code></pre><p>实现的效果如图： <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../images/zhuanpan1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>ul相对定位后，li设为绝对定位。li样式使用border做成三角形，父元素设置overflow: hidden。然后再对每个li进行rotate变换就可以实现如图的形状。再将开始按钮放置到中间盖住中心部分，就实现如图的整体效果。</p>
+</blockquote>
+<h5 id="转盘转动实现"><a href="#转盘转动实现" class="headerlink" title="转盘转动实现"></a>转盘转动实现</h5><p>其实在点击的时候，就已经确定好指针要指向的部分。转盘分为12份，则随机一个1-12的数，每一部分在圆中所占据的角度是30°。例如：第一部分(1)占据了345-15°，则12占据了16-45°…以此类推。<br>因为要制作一个转动的过程，所以需要再随机一个数，这个数就代表要转的圈数，圈数乘上360，加上选中的数所在的度数，即   </p>
+<blockquote>
+<p>转盘转动的总度数 =  圈数 * 360° + 度数   </p>
+</blockquote>
+<p>但由于每一部分占据的是一个范围，所以指针最后所在的区间范围(以12为例)：    </p>
+<blockquote>
+<p>max度数 = 圈数 <em> 360° + 45°<br>min度数 = 圈数 </em> 360° + 16°     </p>
+</blockquote>
+<p>这里肯可能有疑问：12在圆中为什么是16-45°，而不是316-345°。原因是：转盘是按顺时针方向进行转动的，所以当转盘转动时，1过后指针指向的是12、11、10、9…。所以在计算对应位置时，是按1、12、11…的顺序进行的。同时由于1占据345-15°这样一个范围，为了方便计算，我们将其范围设为-16-15°。同时，为了避免指针在转动结束时指向两个部分的交界处，显示不明显，所以我们在左右各设置一个缓冲区，让指针最后不会停留在缓冲区。如图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../images/zhuanpan2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>指针最后只会落在红线之间。    </p>
+<p>为了转盘在开始转动和结束时带有速度递增与递减的效果，需要设置一个加速度、减速度，还要计算出在减速过程中所需要转过的度数，得到开始减速的度数</p>
+<blockquote>
+<p>min度数 - 减速过程中转过的度数 = 开始减速的度数</p>
+</blockquote>
+<p>数据预处理的逻辑如下：<br>&gt;<br>    function prepareData(number){<br>            // 默认12格<br>            number ? ‘’ : number = 12;<br>            let everyDeg = 360 / number,<br>                bufferDeg = 8, // 左右各缓冲4deg<br>                numbersDeg = [];<br>            // 每格所占的度数<br>            let initCount = (everyDeg-bufferDeg)/2;</p>
+<pre><code>    numbersDeg[1] = [-initCount , initCount];
+    for(let i=number ; i &gt;= 2 ; i--){
+        numbersDeg[i+&apos;&apos;] = [initCount+bufferDeg+1 , initCount+everyDeg];
+        initCount += everyDeg;
+    }
+
+    let randomValue = Math.floor(Math.random()*number)+1, // 随机被选中的数
+        rotateCount = Math.floor(Math.random()*3)+6, // 旋转6-8圈
+        maxStep = Math.floor(Math.random()*3)+6, // 最大转速为6-8(deg)
+        stepPlus = 0.05, // 转动的加速度
+        stepLess = 0.02, // 转动的减速度
+        step = 0, // 初始变化的角度
+        initDeg = 0; // 初始转过角度
+
+    let totalDeg = rotateCount * 360,
+        maxDeg = totalDeg + numbersDeg[randomValue][1],
+        minDeg = totalDeg + numbersDeg[randomValue][0],
+        // 每次变化的角度在衰减过程中是等差数列，则在衰减过程中会转过的度数之和
+        // 公式 ((startStep + maxStep) * n) / 2
+        restDeg = (maxStep * (maxStep / stepLess)) /2;
+    return {
+        result: randomValue,
+        maxDeg: maxDeg,
+        minDeg: minDeg,
+        maxStep: maxStep,
+        step: 0,
+        initDeg: 0,
+        stepPlus: stepPlus, 
+        stepLess: stepLess, 
+        restDeg: restDeg,
+        rotateState: &apos;stop&apos; // 当前转盘状态[&apos;plus&apos;,&apos;less&apos;,&apos;stop&apos;] 
+    };
+}    
+</code></pre><p>开始抽奖，通过js代码改变转盘的rotate度数，就可以实现转盘的转动。不过还要考虑加速、减速、停止。</p>
+<blockquote>
+<pre><code>function rotate(){
+    turntable.style.transform = &quot;rotateZ(&quot;+data.initDeg+&quot;deg)&quot;;
+    // 计算下一次转盘的度数
+    data.initDeg += data.step;
+</code></pre></blockquote>
+<pre><code>    // 加速
+    if(data.step &lt; data.maxStep &amp;&amp; data.rotateState == &apos;plus&apos;){
+        data.step += data.stepPlus;
+    }
+    // 减速
+    else if(data.initDeg &gt;= data.minDeg - data.restDeg){
+        data.step -= data.stepLess;
+        data.rotateState = &apos;less&apos;;
+    }
+
+    if(data.initDeg &gt;= data.minDeg &amp;&amp; data.initDeg &lt;= data.maxDeg &amp;&amp; data.step &lt; 0){
+        alert(data.result);
+        resetTurntable();
+        console.log(`step: ${data.step}, deg: ${data.initDeg}`);
+    }else{
+        window.requestAnimationFrame(rotate);
+    }
+}
+</code></pre><p>以上便是一个转盘实现的大致逻辑与代码。最后转动的效果如图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../images/zhuanpan3.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-03-10T06:15:23.156Z" itemprop="dateUpdated">2018-03-10 14:15:23</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/02/25/转盘的简单实现/" target="_blank" rel="external">https://yguess.github.io/2018/02/25/转盘的简单实现/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yguess.github.io">
+            <img src="/img/my_avatar.jpg" alt="YouGuess">
+            YouGuess
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2018/02/25/转盘的简单实现/&title=《转盘的简单实现》 — YouGuess&pic=https://yguess.github.io/img/my_avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2018/02/25/转盘的简单实现/&title=《转盘的简单实现》 — YouGuess&source=有想法了就记录一点" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://yguess.github.io/2018/02/25/转盘的简单实现/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《转盘的简单实现》 — YouGuess&url=https://yguess.github.io/2018/02/25/转盘的简单实现/&via=https://yguess.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://yguess.github.io/2018/02/25/转盘的简单实现/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/03/10/Vue组件的Data/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Viewport</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/17/es6函数参数默认值的作用域/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">es6函数参数</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>YouGuess &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yguess.github.io/2018/02/25/转盘的简单实现/&title=《转盘的简单实现》 — YouGuess&pic=https://yguess.github.io/img/my_avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yguess.github.io/2018/02/25/转盘的简单实现/&title=《转盘的简单实现》 — YouGuess&source=有想法了就记录一点" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://yguess.github.io/2018/02/25/转盘的简单实现/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《转盘的简单实现》 — YouGuess&url=https://yguess.github.io/2018/02/25/转盘的简单实现/&via=https://yguess.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://yguess.github.io/2018/02/25/转盘的简单实现/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://yguess.github.io/2018/02/25/转盘的简单实现/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'YouGuess在这里！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
