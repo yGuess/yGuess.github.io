@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="YouGuess">
 <meta property="og:description" content="Vue组件的data的函数在使用vue开发时，data通常都是一个Object。而在创建Vue组件时，官文文档要求data必须是一个函数，并推荐以下形式：       data(){         return {}     }   开始不是很明白，官方给了例子。说实话因为自己反应比较慢，开始没怎么理解意思。后面看了别人的分析才明白。 其实官方例子的意思是：Vue组件中，如果data是一个对象，">
 <meta property="og:locale" content="zn">
-<meta property="og:updated_time" content="2018-03-10T06:14:15.231Z">
+<meta property="og:updated_time" content="2018-03-10T06:25:49.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Viewport">
 <meta name="twitter:description" content="Vue组件的data的函数在使用vue开发时，data通常都是一个Object。而在创建Vue组件时，官文文档要求data必须是一个函数，并推荐以下形式：       data(){         return {}     }   开始不是很明白，官方给了例子。说实话因为自己反应比较慢，开始没怎么理解意思。后面看了别人的分析才明白。 其实官方例子的意思是：Vue组件中，如果data是一个对象，">
@@ -104,7 +104,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -177,7 +177,10 @@
 <p>cp1.data === cp2.data  // true<br><br>此时,cp1和cp2内部的data就是共用的。<br>而当使用函数时,原型上的data是函数，并将各自的实际data对象赋予实例对象。</p>
 <p><pre><br>let Component = function(obj){<br>    // 对需要构造的组件对象进行处理<br>    this.data = obj.data()<br>}<br>Component.prototype.data = function(){<br>    return {}<br>}</pre></p>
 <p>let cp1 = new Component({ data: function(){ return {} } }),<br>    cp2 = new Component({ data: function(){ return {} } })</p>
-<p>cp1.data === cp2.data  // false<br><br>这样不同的实例data引用不同，不会共享。</p>
+<p>cp1.data === cp2.data  // false<br><br>这样不同的实例data引用不同，不会共享。<br><a href="https://cn.vuejs.org/v2/api/#data" target="_blank" rel="external">Vue的data原文</a></p>
+<blockquote>
+<p>当一个组件被定义，data 必须声明为返回一个初始数据对象的函数，因为组件可能被用来创建多个实例。如果 data 仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供 data 函数，每次创建一个新实例后，我们能够调用 data 函数，从而返回初始数据的一个全新副本数据对象。</p>
+</blockquote>
 
         </div>
 
@@ -185,7 +188,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-03-10T06:14:15.231Z" itemprop="dateUpdated">2018-03-10 14:14:15</time>
+    最後更新時間：<time datetime="2018-03-10T06:25:49.375Z" itemprop="dateUpdated">2018-03-10 14:25:49</time>
 </span><br>
 
 
@@ -266,7 +269,7 @@
     <div class="waves-block waves-effect prev">
       <a href="/2018/03/10/标签页通信/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">No title</h4>
+        <h4 class="title">[no title]</h4>
       </a>
     </div>
   
@@ -309,7 +312,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
         </p>
     </div>
     <div class="bottom">
