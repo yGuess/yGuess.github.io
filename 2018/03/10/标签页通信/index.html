@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="title: Viewportdate: 2016-8-10tag: javascript  #js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。 ###不跨域的通信   ####1.1 iframe嵌">
+    <meta name="description" content="title: js中的页面间通信date: 2016-8-10tag: javascript  js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。 不跨域的通信1.1 iframe嵌套有些页面会通过if">
 <meta property="og:type" content="article">
 <meta property="og:title" content="No title">
 <meta property="og:url" content="https://yguess.github.io/2018/03/10/标签页通信/index.html">
 <meta property="og:site_name" content="YouGuess">
-<meta property="og:description" content="title: Viewportdate: 2016-8-10tag: javascript  #js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。 ###不跨域的通信   ####1.1 iframe嵌">
+<meta property="og:description" content="title: js中的页面间通信date: 2016-8-10tag: javascript  js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。 不跨域的通信1.1 iframe嵌套有些页面会通过if">
 <meta property="og:locale" content="zn">
-<meta property="og:updated_time" content="2018-03-10T06:14:51.439Z">
+<meta property="og:updated_time" content="2018-03-13T05:45:54.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="No title">
-<meta name="twitter:description" content="title: Viewportdate: 2016-8-10tag: javascript  #js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。 ###不跨域的通信   ####1.1 iframe嵌">
+<meta name="twitter:description" content="title: js中的页面间通信date: 2016-8-10tag: javascript  js中的页面间通信本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。 不跨域的通信1.1 iframe嵌套有些页面会通过if">
     
         <link rel="alternate" type="application/atom+xml" title="YouGuess" href="/atom.xml">
     
@@ -103,7 +103,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -139,6 +139,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js中的页面间通信"><span class="post-toc-number">1.</span> <span class="post-toc-text">js中的页面间通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不跨域的通信"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">不跨域的通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-iframe嵌套"><span class="post-toc-number">1.0.1.1.</span> <span class="post-toc-text">1.1 iframe嵌套</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-跨标签页通信-window-open"><span class="post-toc-number">1.0.1.2.</span> <span class="post-toc-text">1.2 跨标签页通信 window.open</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#跨域通信"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">跨域通信</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-标签页通信"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -154,11 +161,10 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>title: Viewport<br>date: 2016-8-10<br>tag: javascript</p>
+            <p>title: js中的页面间通信<br>date: 2016-8-10<br>tag: javascript</p>
 <hr>
-<p>#js中的页面间通信<br>本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。<br>一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。<br>页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。</p>
-<p>###不跨域的通信  </p>
-<p>####1.1 iframe嵌套<br>有些页面会通过iframe标签嵌套页面，嵌套页面即作为子页面。父与子页面之间的通信很简单。  </p>
+<h1 id="js中的页面间通信"><a href="#js中的页面间通信" class="headerlink" title="js中的页面间通信"></a>js中的页面间通信</h1><p>本来准备找实习了，由于暑假回家学车，学完后回不去学校，(⊙﹏⊙)。<br>一些找前端实习的小伙伴都被问到了页面间通讯的问题，所以做了一点了解。<br>页面间通信涉及到跨域与不跨域，不跨域的通信比较简单,而跨域通信的方法也有,不过每一种也都有限制。</p>
+<h3 id="不跨域的通信"><a href="#不跨域的通信" class="headerlink" title="不跨域的通信"></a>不跨域的通信</h3><h4 id="1-1-iframe嵌套"><a href="#1-1-iframe嵌套" class="headerlink" title="1.1 iframe嵌套"></a>1.1 iframe嵌套</h4><p>有些页面会通过iframe标签嵌套页面，嵌套页面即作为子页面。父与子页面之间的通信很简单。  </p>
 <pre><code>&lt;!-- 父页面 postMessage.html --&gt;
 &lt;html&gt;
     &lt;head&gt;&lt;/head&gt;
@@ -187,7 +193,7 @@
     }
 &lt;/script&gt;  
 </code></pre><p>在父页面中的input中输入内容,点击发送,在子页面中就会显示对应内容。<br>当然,如果父页面中存在多个iframe,只需通过window.frame找到对应的ifrmae,如上传递内容就可以了。  </p>
-<p>####1.2 跨标签页通信 window.open<br>有时候,当在一个页面中点击链接，打开了一个新的页面，两个页面在相同的域下，可以实现标签页之间的通讯.</p>
+<h4 id="1-2-跨标签页通信-window-open"><a href="#1-2-跨标签页通信-window-open" class="headerlink" title="1.2 跨标签页通信 window.open"></a>1.2 跨标签页通信 window.open</h4><p>有时候,当在一个页面中点击链接，打开了一个新的页面，两个页面在相同的域下，可以实现标签页之间的通讯.</p>
 <pre><code>&lt;!-- 父页面 postMessage.html --&gt;
 &lt;html&gt;
     &lt;head&gt;&lt;/head&gt;
@@ -218,7 +224,7 @@
 &lt;/script&gt;  
 </code></pre><p>当在postMessage.html页面里点击链接,通过window.open方法打开一个新的页面,如父子页面满足”同源策略”则该方法会返回创建窗口的window对象的引用。getMessage.html添加侦听load事件,通过window.opener获取创建该窗口的window对象的引用,通过该引用可以控制该页面里元素。  </p>
 <p>关于window.open()和window.opener()参见MDN的<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open" target="_blank" rel="external">window.open</a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/opener" target="_blank" rel="external">window.opener</a>。</p>
-<p>###跨域通信<br>有时候我们希望能够在不同的域名之间传递数据,但由于浏览器的<a href="http://baike.baidu.com/link?url=1fU9fksoPuJ4PKsH0MwjZXjzkrWTAPjH3pxWCxg3ujz8d5Rrvy1dEXCsxslmSMfUw6bMpHbdBmxRLk47SMPesq" target="_blank" rel="external">“同源策略”</a>,不同域之间的通信只能通过一些技巧来实现。以下是对是否是同源情况的判断:</p>
+<h3 id="跨域通信"><a href="#跨域通信" class="headerlink" title="跨域通信"></a>跨域通信</h3><p>有时候我们希望能够在不同的域名之间传递数据,但由于浏览器的<a href="http://baike.baidu.com/link?url=1fU9fksoPuJ4PKsH0MwjZXjzkrWTAPjH3pxWCxg3ujz8d5Rrvy1dEXCsxslmSMfUw6bMpHbdBmxRLk47SMPesq" target="_blank" rel="external">“同源策略”</a>,不同域之间的通信只能通过一些技巧来实现。以下是对是否是同源情况的判断:</p>
 <p><table></table></p>
 <p><thead></thead></p>
 <p><tr><br>  <th align="center">编号</th><br>  <th align="center">URL</th><br>  <th align="center">说明</th><br>  <th align="center">是否允许通信</th><br></tr><br></p>
@@ -321,7 +327,7 @@ location.href = &apos;http://www.qq.com&apos;;
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2018-03-10T06:14:51.439Z" itemprop="dateUpdated">2018-03-10 14:14:51</time>
+    最后更新时间：<time datetime="2018-03-13T05:45:54.804Z" itemprop="dateUpdated">2018-03-13 13:45:54</time>
 </span><br>
 
 
@@ -402,7 +408,7 @@ location.href = &apos;http://www.qq.com&apos;;
     <div class="waves-block waves-effect next">
       <a href="/2018/03/10/Vue组件的Data/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Viewport</h4>
+        <h4 class="title">Vue组件的data的函数</h4>
       </a>
     </div>
   
@@ -436,7 +442,7 @@ location.href = &apos;http://www.qq.com&apos;;
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
