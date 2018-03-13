@@ -28,19 +28,19 @@
 <meta property="og:site_name" content="YouGuess">
 <meta property="og:description" content="Viewport学习记录在开发移动端项目时，以前都只知道在head中添加以下代码就可以使得在web的页面在移动端也显示的相对好看点，但具体不是很清楚原理。&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.">
 <meta property="og:locale" content="zn">
-<meta property="og:image" content="https://yguess.github.io/2017/11/17/images/csspixels_100.gif">
-<meta property="og:image" content="https://yguess.github.io/2017/11/17/images/csspixels_in.gif">
-<meta property="og:image" content="https://yguess.github.io/2017/11/17/images/csspixels_out.gif">
-<meta property="og:image" content="https://yguess.github.io/2017/11/17/images/innerWidth.png">
-<meta property="og:image" content="https://yguess.github.io/2017/11/17/images/clientWidth.jpg">
-<meta property="og:image" content="https://yguess.github.io/2017/11/17/images/layoutViewport.png">
-<meta property="og:image" content="https://yguess.github.io/2017/11/17/images/visualviewport.jpg">
-<meta property="og:image" content="https://yguess.github.io/2017/11/17/images/mobile_web_page.png">
-<meta property="og:updated_time" content="2018-03-10T06:12:43.321Z">
+<meta property="og:image" content="https://yguess.github.io/images/csspixels_100.gif">
+<meta property="og:image" content="https://yguess.github.io/images/csspixels_in.gif">
+<meta property="og:image" content="https://yguess.github.io/images/csspixels_out.gif">
+<meta property="og:image" content="https://yguess.github.io/images/innerWidth.png">
+<meta property="og:image" content="https://yguess.github.io/images/clientWidth.jpg">
+<meta property="og:image" content="https://yguess.github.io/images/layoutViewport.png">
+<meta property="og:image" content="https://yguess.github.io/images/visualviewport.jpg">
+<meta property="og:image" content="https://yguess.github.io/images/mobile_web_page.png">
+<meta property="og:updated_time" content="2018-03-13T05:59:41.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Viewport">
 <meta name="twitter:description" content="Viewport学习记录在开发移动端项目时，以前都只知道在head中添加以下代码就可以使得在web的页面在移动端也显示的相对好看点，但具体不是很清楚原理。&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.">
-<meta name="twitter:image" content="https://yguess.github.io/2017/11/17/images/csspixels_100.gif">
+<meta name="twitter:image" content="https://yguess.github.io/images/csspixels_100.gif">
     
         <link rel="alternate" type="application/atom+xml" title="YouGuess" href="/atom.xml">
     
@@ -180,19 +180,19 @@
 <h6 id="两个像素的关系"><a href="#两个像素的关系" class="headerlink" title="两个像素的关系"></a>两个像素的关系</h6><p>在PC上浏览器的宽度的调整并且宽度计算是通过物理像素，这使得在页面不缩放(100%)的情况下，1个css像素等于1个物理像素.放大到200%，一个css像素等于4个物理像素，css像素数减半。<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/csspixels_100.gif" alt="1px==1px" title="">
+                    <img src="/images/csspixels_100.gif" alt="1px==1px" title="">
                 </div>
                 <div class="image-caption">1px==1px</div>
             </figure> 100%时，1css像素大小与设备像素相等<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/csspixels_in.gif" alt="拉伸" title="">
+                    <img src="/images/csspixels_in.gif" alt="拉伸" title="">
                 </div>
                 <div class="image-caption">拉伸</div>
             </figure> 放大过程,css像素被拉伸<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/csspixels_out.gif" alt="缩小" title="">
+                    <img src="/images/csspixels_out.gif" alt="缩小" title="">
                 </div>
                 <div class="image-caption">缩小</div>
             </figure> 缩小过程,css像素被缩小</p>
@@ -206,32 +206,32 @@
 <p>innerWidth获取浏览器可见内容区域的宽度(包含滚动条)<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/innerWidth.png" alt="" title="">
+                    <img src="/images/innerWidth.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure><br>clientWidth获取viewport的宽(不包含滚动条)<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/clientWidth.jpg" alt="" title="">
+                    <img src="/images/clientWidth.jpg" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure><br>offsetwid获取html的宽，之前说过viewport是限制html的内容区域，未修改时，html的宽都是100%继承viewport的宽。<br>在PC上，我们一般不会太关注这些。因为PC浏览器viewport由浏览器窗口大小决定，而移动端则会有明显的问题。</p>
 <h4 id="移动端的viewport"><a href="#移动端的viewport" class="headerlink" title="移动端的viewport"></a>移动端的viewport</h4><p>在移动端显示PC的网页，实际情况如下图，这个viewport称为<strong>布局视口(layout viewport)</strong>。而网页显示在屏幕可视区域的部分成为视觉视口(visual viewport)。<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/layoutViewport.png" alt="" title="">
+                    <img src="/images/layoutViewport.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure><br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/visualviewport.jpg" alt="" title="">
+                    <img src="/images/visualviewport.jpg" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>。<br>默认情况下，大多数移动端浏览器会将视觉视口这个框缩放到与布局视口相同，则会看到一下情况：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/mobile_web_page.png" alt="" title="">
+                    <img src="/images/mobile_web_page.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
@@ -267,7 +267,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-03-10T06:12:43.321Z" itemprop="dateUpdated">2018-03-10 14:12:43</time>
+    最后更新时间：<time datetime="2018-03-13T05:59:41.254Z" itemprop="dateUpdated">2018-03-13 13:59:41</time>
 </span><br>
 
 

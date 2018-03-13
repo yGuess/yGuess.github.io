@@ -28,14 +28,14 @@
 <meta property="og:site_name" content="YouGuess">
 <meta property="og:description" content="转盘的简单实现通过代码实现抽奖的转盘，使用html、css、js实现(并未使用canvas)。参考例子：JS写的一个抽奖小Demo从普通写法到设计模式再向ES6的进阶路程。 实现样式实现ul是转盘部分，将转盘划分成12份。pointer则是点击转动部分。主要的html结构如下：  &amp;lt;ul class=&amp;quot;turntable&amp;quot;&amp;gt;     &amp;lt;li&amp;gt;&amp;lt;sp">
 <meta property="og:locale" content="zn">
-<meta property="og:image" content="https://yguess.github.io/2018/02/25/images/zhuanpan1.png">
-<meta property="og:image" content="https://yguess.github.io/2018/02/25/images/zhuanpan2.png">
-<meta property="og:image" content="https://yguess.github.io/2018/02/25/images/zhuanpan3.gif">
-<meta property="og:updated_time" content="2018-03-10T06:15:23.156Z">
+<meta property="og:image" content="https://yguess.github.io/images/zhuanpan1.png">
+<meta property="og:image" content="https://yguess.github.io/images/zhuanpan2.png">
+<meta property="og:image" content="https://yguess.github.io/images/zhuanpan3.gif">
+<meta property="og:updated_time" content="2018-03-13T05:58:24.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="转盘的简单实现">
 <meta name="twitter:description" content="转盘的简单实现通过代码实现抽奖的转盘，使用html、css、js实现(并未使用canvas)。参考例子：JS写的一个抽奖小Demo从普通写法到设计模式再向ES6的进阶路程。 实现样式实现ul是转盘部分，将转盘划分成12份。pointer则是点击转动部分。主要的html结构如下：  &amp;lt;ul class=&amp;quot;turntable&amp;quot;&amp;gt;     &amp;lt;li&amp;gt;&amp;lt;sp">
-<meta name="twitter:image" content="https://yguess.github.io/2018/02/25/images/zhuanpan1.png">
+<meta name="twitter:image" content="https://yguess.github.io/images/zhuanpan1.png">
     
         <link rel="alternate" type="application/atom+xml" title="YouGuess" href="/atom.xml">
     
@@ -189,7 +189,7 @@
 </code></pre><p>实现的效果如图： <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/zhuanpan1.png" alt="" title="">
+                    <img src="/images/zhuanpan1.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure><br>ul相对定位后，li设为绝对定位。li样式使用border做成三角形，父元素设置overflow: hidden。然后再对每个li进行rotate变换就可以实现如图的形状。再将开始按钮放置到中间盖住中心部分，就实现如图的整体效果。</p>
@@ -205,7 +205,7 @@
 <p>这里肯可能有疑问：12在圆中为什么是16-45°，而不是316-345°。原因是：转盘是按顺时针方向进行转动的，所以当转盘转动时，1过后指针指向的是12、11、10、9…。所以在计算对应位置时，是按1、12、11…的顺序进行的。同时由于1占据345-15°这样一个范围，为了方便计算，我们将其范围设为-16-15°。同时，为了避免指针在转动结束时指向两个部分的交界处，显示不明显，所以我们在左右各设置一个缓冲区，让指针最后不会停留在缓冲区。如图：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/zhuanpan2.png" alt="" title="">
+                    <img src="/images/zhuanpan2.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>指针最后只会落在红线之间。    </p>
@@ -276,7 +276,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="../images/zhuanpan3.gif" alt="" title="">
+                    <img src="/images/zhuanpan3.gif" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -286,7 +286,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-03-10T06:15:23.156Z" itemprop="dateUpdated">2018-03-10 14:15:23</time>
+    最后更新时间：<time datetime="2018-03-13T05:58:24.062Z" itemprop="dateUpdated">2018-03-13 13:58:24</time>
 </span><br>
 
 
